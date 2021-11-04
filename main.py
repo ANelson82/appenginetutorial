@@ -1,7 +1,6 @@
-from flask import Flask
+from google.appengine.api import app_identity
+import os
 
-app = Flask(__name__)
+bucket_name = os.environ.get('BUCKET_NAME',app_identity.get_default_gcs_bucket_name())
 
-@app.route('/')
-def hello():
-    return "Hello World!"
+file_name = '/' + 'BUCKET_NAME' + '/' + 'FILE_NAME'
